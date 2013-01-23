@@ -1,0 +1,199 @@
+<!--
+	@author: ehsiao@hubspot.com
+
+	A sample jinja email template that can be customized in Hubspot's Email Tool
+	Each number corresponds to the section that was changed in template1.html
+
+-->
+<body style="background-color:#eee">
+<center>
+<table style="background-color:white">
+    <tr>
+        <td>
+			<table style="margin:15px;width:600px;" border="0" cellspacing="0" cellpadding="0">
+			    <tr >
+			        <td style="border-bottom:3px #c4e9ff solid;width:80%">
+			        	<!-- 
+						========================================================================================
+			        	1. This is where you put in the jinja tag for allowing customers to change their logo image 
+						========================================================================================
+			        	-->
+			        	{% linked_image "logo_image" label="Logo", src="{{ site_settings.logo_src }}", 
+			        		link="{{ site_settings.company_domain }}", 
+			        		width="{{ site_settings.logo_width }}", 
+			        		height="{{ site_settings.logo_height }}" 
+			        	%}
+			 		</td>
+					<td style="border-bottom:3px #c4e9ff solid;">
+						<!-- 
+						=========================================================================================================
+			        	2. This is where you put in the social media widgit for the customer to put in their social media links 
+						=========================================================================================================
+			        	-->
+						{% social_sharing "Social Sharing" widget_wrapper={type="inline", value="social_sharing_template"} %}
+			    			{% widget_wrapper "social_sharing_template" %}
+						{% end_widget_wrapper %}
+					</td>
+				</tr>
+				<tr >
+					<td colspan="2" style="border-top:3px #eee solid;">
+					</td>
+				</tr>
+			</table>
+
+
+			<table style="margin:15px;width:600px" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="width:400px;">
+						<!-- 
+						======================================================================================================================
+			        	3. This is where you put in the jinja tag for allowing customer to change the main content image (with default image)
+						======================================================================================================================
+			        	-->
+						{% linked_image "image_name" label="Main Content Image", src="http://leandrovieira.com/projects/jquery/lightbox/photos/image1.jpg", 
+							target="_blank" 
+						%}
+					</td>
+					<td style="background-color:#eee;width:190px;padding-left:10px;">
+						<!-- 
+						==============================================================================================
+			        	4. The Main content area which customers can edit. Along with placeholder html inside the tags 
+						==============================================================================================
+			        	-->
+						{% content_attribute "email_body" %}
+			                <h1 style="font-size:16px;"> Ready to Convert? </h1>
+			    		    <p>By signing up today, you're guaranteed a free hat!</p>
+			    		    <center><a href="#" class="classname" style="-moz-box-shadow: inset 0px 1px 0px 0px #bbdaf7;-webkit-box-shadow: inset 0px 1px 0px 0px #bbdaf7;box-shadow: inset 0px 1px 0px 0px #bbdaf7;background: -moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');background-color: #79bbff;-moz-border-radius: 6px;-webkit-border-radius: 6px;border-radius: 6px;border: 1px solid #84bbf3;display: inline-block;color: #ffffff;font-family: arial;font-size: 15px;font-weight: bold;padding: 6px 24px;text-decoration: none;text-shadow: 1px 1px 0px #528ecc;">Call To Action
+							</a></center>
+			            {% end_content_attribute %}
+					</td>
+				</tr>
+			</table>
+
+			<table style="margin:15px; width:600px;" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+						<!-- 
+						========================================================================================
+			        	5. This is where you put in the jinja tag for the row 1 image 
+						========================================================================================
+			        	-->
+						{% linked_image "Row Content 1 Image" label="Row Content 1 Image", 
+						src="http://urbanamp.com/EmailTemplateImages/images/scenic.jpg", 
+						width="150", height="150", target="_blank" 
+						%}
+					</td>
+					<td style="display:block; width:450px; height:150px;padding-top:5px;">
+						<!-- 
+						====================================================================================================
+			        	6. This is where you put in the rich text widget for allowing customers to edit the text for row 1
+						====================================================================================================
+			        	-->
+			            {% widget_block rich_text "Row Content 1" label="Row Content 1" %}
+			                {% widget_attribute "html" %}
+			                    <h1 style="font-size:16px; margin-left:20px;">Row Content 1</h1>
+			    				<p style="margin-left:20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet 
+								tempus orci a ornare. Phasellus adipiscing iaculis aliquet. Pellentesque a 
+								orci nunc, eget scelerisque quam. Integer adipiscing varius aliquam. 
+								Aenean sit amet leo nunc, at ultrices dolor. Maecenas.</p>
+			                {% end_widget_attribute %}
+			            {% end_widget_block %}
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-top:30px;">
+						<!-- 
+						========================================================================================
+			        	7. This is where you put in the jinja tag for the row 2 image 
+						========================================================================================
+			        	-->
+						{% linked_image "Row Content 2 Image" label="Row Content 2 Image", 
+						src="http://urbanamp.com/EmailTemplateImages/images/log.jpg", 
+						width="150", height="150", target="_blank" 
+						%}
+					</td>
+					<td style="display:block; width:450px; height:150px;padding-top:20px;">
+						<!-- 
+						====================================================================================================
+			        	8. This is where you put in the rich text widget for allowing customers to edit the text for row 2
+						====================================================================================================
+			        	-->
+						{% widget_block rich_text "Row Content 2" label="Row Content 2" %}
+			                {% widget_attribute "html" %}
+			                    <h1 style="font-size:16px; margin-left:20px;">Row Content 2</h1>
+			        			<p style="margin-left:20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet 
+								tempus orci a ornare. Phasellus adipiscing iaculis aliquet. Pellentesque a 
+								orci nunc, eget scelerisque quam. Integer adipiscing varius aliquam. 
+								Aenean sit amet leo nunc, at ultrices dolor. Maecenas.
+								</p>
+			                {% end_widget_attribute %}
+			            {% end_widget_block %}
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-top:30px;">
+						<!-- 
+						========================================================================================
+			        	9. This is where you put in the jinja tag for the row 2 image 
+						========================================================================================
+			        	-->
+						{% linked_image "Row Content 3 Image" label="Row Content 3 Image", 
+						src="http://urbanamp.com/EmailTemplateImages/images/light.jpg", 
+						width="150", height="150", target="_blank" 
+						%}
+					</td>
+					<td style="display:block; width:450px; height:150px;padding-top:20px;">
+						<!-- 
+						====================================================================================================
+			        	10. This is where you put in the rich text widget for allowing customers to edit the text for row 2
+						====================================================================================================
+			        	-->
+						{% widget_block rich_text "Row Content 3" label="Row Content 3" %}
+			                {% widget_attribute "html" %}
+			                    <h1 style="font-size:16px; margin-left:20px;">Row Content 3</h1>
+								<p style="margin-left:20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet 
+								tempus orci a ornare. Phasellus adipiscing iaculis aliquet. Pellentesque a 
+								orci nunc, eget scelerisque quam. Integer adipiscing varius aliquam. 
+								Aenean sit amet leo nunc, at ultrices dolor. Maecenas.</p>
+			                {% end_widget_attribute %}
+			            {% end_widget_block %}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="padding-top:15px; border-bottom:3px #eee solid;"></td>
+				</tr>
+			</table>
+			<table style="width:600px;margin-left:15px;padding-bottom:15px;" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="width:350px;">
+						<!-- 
+						====================================================================================================
+			        	11. Text box widget for customers to put in their footer content
+						====================================================================================================
+			        	-->
+						<p>{% text "Text" label="Footer Content", attr="val", value="Footer Copyright 2012" %}</p>
+
+						<!-- 
+						====================================================================================================
+			        	12. Unsubscribe tag for customer
+						====================================================================================================
+			        	-->
+						<p>{{ unsubscribe_anchor }}</p>
+					</td>
+					<td style="padding-left:50px;width:250px;">
+						<!-- 
+						====================================================================================================
+			        	1. Basic company information brought in from the customer's settings
+						====================================================================================================
+			        	-->
+			        	{{ site_settings.company_street_address_1 }}<br/>
+			        	{{ site_settings.company_city }} , {{ site_settings.company_state }}<br/>
+			        	{{ site_settings.company_name }}
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</center>
+</body>
